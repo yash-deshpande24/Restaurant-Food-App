@@ -1,18 +1,27 @@
 const express = require("express");
+const colors = require("colors");
+const cors = require("cors");
+const morgan = require("morgan");
+const dotenv = require("dotenv");
 
-//rest object
+// Load environment variables from .env file
+dotenv.config();
+
+// Rest object
 const app = express();
+app.use(cors());
+app.use(morgan("dev"));
 
-//routes
+// Routes
 // URL => http://localhost:3000
 app.get("/", (req, res) => {
-res.send("<h1>welcome to food app</h1>");
+    res.send("<h1>Welcome to food app</h1>");
 });
 
-//PORT
-const PORT = 3000;
+// PORT
+const PORT = process.env.PORT || 3000;
 
-//listen
+// Listen
 app.listen(PORT, () => {
-    console.log(`listening on port ${PORT}`);
+    console.log(`Server running on ${PORT}`.white.bgGreen);
 });
