@@ -19,6 +19,7 @@ app.use(cors()); // Enable CORS
 app.use(morgan("dev")); // Log HTTP requests
 app.use(express.json()); // Parse JSON request bodies <-- THIS IS CRITICAL
 
+
 // Routes
 // URL => http://localhost:8080
 app.get("/", (req, res) => {
@@ -27,6 +28,7 @@ app.get("/", (req, res) => {
 
 // Auth routes
 app.use("/api/v1/auth", require("./routes/authRoutes"));
+app.use ("/api/v1/user", require("./routes/userRoutes"));
 
 // PORT
 const PORT = process.env.PORT || 3000;
